@@ -3,11 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomLogger.LoggingAPI", "CustomLogger.LoggingAPI\CustomLogger.LoggingAPI.csproj", "{71E6CB12-CB91-4A71-ACFE-CF2E8000B062}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomLogger.LoggingAPI", "CustomLogger.LoggingAPI\CustomLogger.LoggingAPI.csproj", "{71E6CB12-CB91-4A71-ACFE-CF2E8000B062}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomLogger.Domain", "CustomLogger.Domain\CustomLogger.Domain.csproj", "{31C829CA-FFDD-4E2A-8C13-B7F81FF499C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomLogger.Domain", "CustomLogger.Domain\CustomLogger.Domain.csproj", "{31C829CA-FFDD-4E2A-8C13-B7F81FF499C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomLogger.Data.MongoDB", "CustomLogger.Data.MongoDB\CustomLogger.Data.MongoDB.csproj", "{C7399E29-5518-4E29-8685-62A94CAEEB11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomLogger.Data.MongoDB", "CustomLogger.Data.MongoDB\CustomLogger.Data.MongoDB.csproj", "{C7399E29-5518-4E29-8685-62A94CAEEB11}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logging Microservice", "Logging Microservice", "{B0C75D1C-57BD-472B-AC18-3D7237CCCE19}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Consumer", "Consumer", "{9C779C59-7005-4F0E-B2F6-666D3ABF458F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomLogger.Consumer.Web", "CustomLogger.Consumer.Web\CustomLogger.Consumer.Web.csproj", "{D6B0E422-54CD-43CC-9B0E-E888A2C8241D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomLogger.Consumer.ApiClient", "CustomLogger.Consumer.ApiClient\CustomLogger.Consumer.ApiClient.csproj", "{001FC915-A1D4-4ED5-B57E-91B5EA42B75A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,9 +35,24 @@ Global
 		{C7399E29-5518-4E29-8685-62A94CAEEB11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7399E29-5518-4E29-8685-62A94CAEEB11}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7399E29-5518-4E29-8685-62A94CAEEB11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6B0E422-54CD-43CC-9B0E-E888A2C8241D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6B0E422-54CD-43CC-9B0E-E888A2C8241D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6B0E422-54CD-43CC-9B0E-E888A2C8241D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6B0E422-54CD-43CC-9B0E-E888A2C8241D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{001FC915-A1D4-4ED5-B57E-91B5EA42B75A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{001FC915-A1D4-4ED5-B57E-91B5EA42B75A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{001FC915-A1D4-4ED5-B57E-91B5EA42B75A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{001FC915-A1D4-4ED5-B57E-91B5EA42B75A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{71E6CB12-CB91-4A71-ACFE-CF2E8000B062} = {B0C75D1C-57BD-472B-AC18-3D7237CCCE19}
+		{31C829CA-FFDD-4E2A-8C13-B7F81FF499C9} = {B0C75D1C-57BD-472B-AC18-3D7237CCCE19}
+		{C7399E29-5518-4E29-8685-62A94CAEEB11} = {B0C75D1C-57BD-472B-AC18-3D7237CCCE19}
+		{D6B0E422-54CD-43CC-9B0E-E888A2C8241D} = {9C779C59-7005-4F0E-B2F6-666D3ABF458F}
+		{001FC915-A1D4-4ED5-B57E-91B5EA42B75A} = {9C779C59-7005-4F0E-B2F6-666D3ABF458F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {029746AD-FC86-45AE-82B4-ECD42DEE6613}
