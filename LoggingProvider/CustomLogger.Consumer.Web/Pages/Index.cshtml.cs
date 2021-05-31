@@ -1,10 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CustomLogger.Consumer.ApiClient.Extensions;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CustomLogger.Consumer.Web.Pages
 {
@@ -19,7 +15,7 @@ namespace CustomLogger.Consumer.Web.Pages
 
         public void OnGet()
         {
-
+            _logger.LogInformationToApi("Loading IndexModel page.");
         }
     }
 }

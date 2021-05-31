@@ -4,7 +4,6 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System;
 using System.Diagnostics;
-using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
@@ -31,33 +30,27 @@ namespace CustomLogger.Consumer.ApiClient.HttpClients
 
         public async Task LogAsync(LogLevel logLevel, string message, Exception exception = null, string className = null, string methodName = null, string user = null)
         {
-            var payload = new LogPayloadResource
+            try
             {
-                Level = logLevel,
-                Application = _loggerOptions.ApplicationName,
-                Message = message,
-                Class = className,
-                Method = methodName,
-                User = user,
-            };
+                var payload = new LogPayloadResource
+                {
+                    Application = _loggerOptions.ApplicationName,
+                    Level = logLevel,
+                    Message = message,
+                    Class = className,
+                    Method = methodName,
+                    User = user,
+                    Stacktrace = exception?.StackTrace,
+                };
 
-            // Get caller information
-            var stackTrace = new StackTrace();
-            payload.Stacktrace = stackTrace.ToString();
-
-            var sourceMethod = new StackTrace().GetFrames().Select(frame => frame.GetMethod()).LastOrDefault();
-            if (string.IsNullOrEmpty(payload.Class))
-            {
-                payload.Class = sourceMethod.ReflectedType.FullName;
+                var json = JsonSerializer.Serialize(payload);
+                var serializedContent = new StringContent(json, Encoding.UTF8, "application/json");
+                await _httpClient.PostAsync(_logUrl, serializedContent);
             }
-            if (string.IsNullOrEmpty(payload.Method))
+            catch(Exception ex)
             {
-                payload.Method = sourceMethod.Name;
+                Debug.WriteLine("Error sending log: {0} {1}", ex.Message, ex.InnerException?.Message ?? string.Empty);
             }
-
-            var json = JsonSerializer.Serialize(payload);
-            var serializedContent = new StringContent(json, Encoding.UTF8, "application/json");
-            await _httpClient.PostAsync(_logUrl, serializedContent);
         }
     }
 }

@@ -8,6 +8,8 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
 COPY ["CustomLogger.LoggingAPI/CustomLogger.LoggingAPI.csproj", "CustomLogger.LoggingAPI/"]
+COPY ["CustomLogger.Data.MongoDB/CustomLogger.Data.MongoDB.csproj", "CustomLogger.Data.MongoDB/"]
+COPY ["CustomLogger.Domain/CustomLogger.Domain.csproj", "CustomLogger.Domain/"]
 RUN dotnet restore "CustomLogger.LoggingAPI/CustomLogger.LoggingAPI.csproj"
 COPY . .
 WORKDIR "/src/CustomLogger.LoggingAPI"

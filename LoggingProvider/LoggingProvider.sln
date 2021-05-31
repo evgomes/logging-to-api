@@ -15,7 +15,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Consumer", "Consumer", "{9C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomLogger.Consumer.Web", "CustomLogger.Consumer.Web\CustomLogger.Consumer.Web.csproj", "{D6B0E422-54CD-43CC-9B0E-E888A2C8241D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomLogger.Consumer.ApiClient", "CustomLogger.Consumer.ApiClient\CustomLogger.Consumer.ApiClient.csproj", "{001FC915-A1D4-4ED5-B57E-91B5EA42B75A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomLogger.Consumer.ApiClient", "CustomLogger.Consumer.ApiClient\CustomLogger.Consumer.ApiClient.csproj", "{001FC915-A1D4-4ED5-B57E-91B5EA42B75A}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{BC05D26D-6E63-4760-B7D8-13594ABEEEAE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +45,10 @@ Global
 		{001FC915-A1D4-4ED5-B57E-91B5EA42B75A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{001FC915-A1D4-4ED5-B57E-91B5EA42B75A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{001FC915-A1D4-4ED5-B57E-91B5EA42B75A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC05D26D-6E63-4760-B7D8-13594ABEEEAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC05D26D-6E63-4760-B7D8-13594ABEEEAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC05D26D-6E63-4760-B7D8-13594ABEEEAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC05D26D-6E63-4760-B7D8-13594ABEEEAE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

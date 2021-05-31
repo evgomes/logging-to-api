@@ -1,0 +1,61 @@
+version: '3.4'
+
+services:
+
+  mongo:
+    container_name: mongo
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: sample
+    ports:
+      - 27018:27017
+    networks:
+      - custom-logger
+
+  custom-logger-api:
+    container_name: custom-logger-api
+    image: ${DOCKER_REGISTRY-}customloggerloggingapi
+    build:
+      context: .
+      dockerfile: CustomLogger.LoggingAPI/Dockerfile
+    depends_on:
+      - mongo
+    links:
+      - mongo
+    networks:
+      - custom-logger
+    ports:
+      - 8000:80
+    expose:
+      - "80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "ASPNETCORE_URLS=http://+"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
+  custom-logger-consumer-web:
+    container_name: custom-logger-consumer-web
+    image: ${DOCKER_REGISTRY-}customloggerconsumerweb
+    build:
+      context: .
+      dockerfile: CustomLogger.Consumer.Web/Dockerfile
+    networks:
+      - custom-logger
+    ports:
+      - 9000:80
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "ASPNETCORE_URLS=http://+"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+    depends_on:
+      - custom-logger-api
+
+networks: 
+    custom-logger:
+        driver: bridge

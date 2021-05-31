@@ -14,6 +14,8 @@ namespace CustomLogger.LoggingAPI
 {
     public class Startup
     {
+        private const string CORS_ORIGINS = "CORS_ORIGINS";
+
         public IConfiguration Configuration { get; }
 
         public Startup(IConfiguration configuration)
@@ -23,6 +25,17 @@ namespace CustomLogger.LoggingAPI
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: CORS_ORIGINS,
+                                  builder =>
+                                  {
+                                      builder.AllowAnyOrigin();
+                                      builder.AllowAnyMethod();
+                                      builder.AllowAnyHeader();
+                                  });
+            });
+
             services.Configure<ConnectionOptions>(Configuration.GetSection(nameof(ConnectionOptions)));
             services.AddSingleton<IMongoDbContext, LogDbContext>();
             services.AddSingleton<ILogRepository, LogRepository>();
@@ -43,11 +56,12 @@ namespace CustomLogger.LoggingAPI
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CustomLogger.LoggingAPI v1"));
 
             app.UseRouting();
+
+            app.UseCors(CORS_ORIGINS);
 
             app.UseAuthorization();
 
