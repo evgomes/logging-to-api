@@ -38,23 +38,6 @@ namespace CustomLogger.Consumer.ApiClient.Extensions
 		}
 
 		/// <summary>
-		/// Adds the API logger to the application. This method allows passing the API logger options manually.
-		/// <param name="services">Service collection.</param>
-		/// <param name="configuration">Configuration properties.</param>
-		/// <param name="options">API logger options.</param>
-		public static void AddApiLogger(this IServiceCollection services, IConfiguration configuration, ApiLoggerOptions options)
-		{
-			services.Configure<ApiLoggerOptions>(opt =>
-			{
-				opt.ApiUrl = options.ApiUrl;
-				opt.ApplicationName = options.ApplicationName;
-				opt.LogLevels = options.LogLevels;
-			});
-
-			AddApiClientAndProvider(services);
-		}
-
-		/// <summary>
 		/// Configures the API logger provider using the current logger factory.
 		/// </summary>
 		/// <param name="loggerFactory">Logger factory.</param>
@@ -75,7 +58,7 @@ namespace CustomLogger.Consumer.ApiClient.Extensions
 			{
 				client.DefaultRequestHeaders.Clear();
 				client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-				client.Timeout = TimeSpan.FromSeconds(30);
+				client.Timeout = TimeSpan.FromSeconds(10);
 			}).AddPolicyHandler(GetRetryPolicy()); ;
 
 			services.AddTransient<ApiLoggerProvider>();
