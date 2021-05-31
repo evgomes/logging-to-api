@@ -1,14 +1,10 @@
 ﻿using Microsoft.Extensions.Logging;
-using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
 using System;
 
-namespace CustomLogger.Domain.Models
+namespace CustomLogger.Consumer.ApiClient.Resources
 {
-    public class Log
+    public class LogResource
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
         public LogLevel Level { get; set; }
         public string Application { get; set; }
@@ -17,6 +13,6 @@ namespace CustomLogger.Domain.Models
         public string Message { get; set; }
         public string Stacktrace { get; set; }
         public string User { get; set; }
-        public DateTime CreatedOn { get; set; } = DateTime.UtcNow;
+        public DateTime CreatedOn { get; set; }
     }
 }

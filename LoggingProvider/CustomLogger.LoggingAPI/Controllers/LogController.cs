@@ -3,6 +3,7 @@ using CustomLogger.Domain.Models;
 using CustomLogger.Domain.Repositories;
 using CustomLogger.LoggingAPI.Resources;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace CustomLogger.LoggingAPI.Controllers
@@ -26,6 +27,13 @@ namespace CustomLogger.LoggingAPI.Controllers
             var log = _mapper.Map<Log>(resource);
             await _logRepository.AddAsync(log);
             return Ok();
+        }
+
+        [HttpGet]
+        [ProducesResponseType(200, Type = typeof(List<Log>))]
+        public async Task<IActionResult> ListAsync()
+        {
+            return Ok(await _logRepository.ListAsync());
         }
     }
 }

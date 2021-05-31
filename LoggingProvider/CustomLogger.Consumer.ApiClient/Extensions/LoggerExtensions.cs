@@ -57,6 +57,7 @@ namespace CustomLogger.Consumer.ApiClient.Extensions
                 Class = className ?? methodInfo.ReflectedType.Name,
                 Method = methodName ?? methodInfo.Name,
                 User = user,
+                Stacktrace = exception?.StackTrace,
             };
 
             logger.Log(logLevel, 0, state, exception, LogPayloadResourceFormatter);

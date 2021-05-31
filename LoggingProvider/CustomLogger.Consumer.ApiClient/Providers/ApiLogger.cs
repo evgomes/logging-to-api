@@ -29,10 +29,10 @@ namespace CustomLogger.Consumer.ApiClient.Providers
 
 			// Comes from the extension methods that send logs to the API
 			var payload = state as LogPayloadResource;
-			var formattedMessage = formatter(state, exception);
-
+			payload.Message = formatter(state, exception);
+			
 			// Here I don't await the API call, because HTTP calls can take some time to complete. It's better to use a "fire and forget" approach to not overload the application.
-			_loggerApiClient.LogAsync(logLevel, formattedMessage, exception, payload?.Class, payload?.Method, payload?.User);
+			_loggerApiClient.LogAsync(payload);
 		}
 	}
 }

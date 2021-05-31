@@ -1,0 +1,58 @@
+﻿@page
+@model CustomLogger.Consumer.Web.Pages.LogsModel
+@{
+    ViewData["Title"] = "Logs";
+}
+
+<div class="row">
+    <div class="col-12 text-center">
+        <h2>Saved Logs</h2>
+    </div>
+</div>
+
+@if (Model.Logs.Count == 0)
+{
+    <div class="row mt-4">
+        <div class="col-12">
+            <p>There are no logs to display.</p>
+        </div>
+    </div>
+}
+else
+{
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Application</th>
+                            <th>Level</th>
+                            <th>Class</th>
+                            <th>Method</th>
+                            <th>Created On</th>
+                            <th>User</th>
+                            <th>Message</th>
+                            <th>Stacktrace</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var log in Model.Logs)
+                        {
+                            <tr>
+                                <td>@log.Application</td>
+                                <td>@log.Level.ToString()</td>
+                                <td>@log.Class</td>
+                                <td>@log.Method</td>
+                                <td>@log.CreatedOn.ToString("MM/dd/yyyy HH:mm:ss")</td>
+                                <td>@(log.User ?? "-")</td>
+                                <td>@log.Message</td>
+                                <td>@(log.Stacktrace ?? "-")</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}
