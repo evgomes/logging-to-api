@@ -25,9 +25,9 @@ namespace CustomLogger.Consumer.ApiClient.Providers
 
         public ILogger CreateLogger(string categoryName)
         {
-            // HttpClientFactory and HttpClient implementations use logging too. We have to disable this since we use these
-            // classes to send data to the API, otherwise we end up with recursive calls to the API, and consequently with
-            // stack overflow exceptions.
+            // The HttpClientFactory and HttpClient classes use logging behind the scenes. We need to disable logging for these
+            // classes to send data to the logging API, otherwise we end up with recursive calls to this method, and consequently
+            // we face stack overflow exceptions.
             // See: https://stackoverflow.com/questions/52083818/how-can-i-prevent-httpclient-via-ihttpclientfactory-from-logging-to-ilogger
             if (categoryName.StartsWith(LoggerApiClient.API_CLIENT_ASSEMBLY_NAME))
             {
