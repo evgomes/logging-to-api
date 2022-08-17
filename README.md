@@ -73,15 +73,15 @@ To test the application, you need [Docker](https://www.docker.com/) and [Docker 
 
 Navigate to [http://localhost:9000/](http://localhost:9000/). That is the URL to open the sample web application. You can use the form in the index page to send custom mesages to the API.
 
-[image]
+![Form to send log messages](https://raw.githubusercontent.com/evgomes/logging-to-api/main/images/1-sample-log.png?token=GHSAT0AAAAAABUEBR6HLGMNYTOYSJV7WU5EYX4I6XA)
 
 Navigate to ```http://localhost:9000/Logs``` to see stored logs.
 
-[image]
+![Logs page](https://raw.githubusercontent.com/evgomes/logging-to-api/main/images/2-see-logs.png?token=GHSAT0AAAAAABUEBR6HMKKHYNKDN4IY7SOQYX4JACQ)
 
 Now navigate to ```http://localhost:8000/swagger/index.html```. That is the URL for the Swagger document that shows the routes the API offers. The API contains only two routes, but you can improve it to meet your project requirements.
 
-[image]
+![Logging API](https://raw.githubusercontent.com/evgomes/logging-to-api/main/images/3-api.png?token=GHSAT0AAAAAABUEBR6GJLL452D5EHKMR5A2YX4JAOA)
 
 # Before Using it in Production
 
