@@ -73,7 +73,7 @@ To test the application, you need [Docker](https://www.docker.com/) and [Docker 
 
 Navigate to [http://localhost:9000/](http://localhost:9000/). That is the URL to open the sample web application. You can use the form in the index page to send custom mesages to the API.
 
-![Form to send log messages](https://raw.githubusercontent.com/evgomes/logging-to-api/main/images/1-sample-log.png?token=GHSAT0AAAAAABUEBR6HLGMNYTOYSJV7WU5EYX4I6XA)
+![Form to send log messages](https://raw.githubusercontent.com/evgomes/logging-to-api/main/images/1-sample-log.png?token=GHSAT0AAAAAABUEBR6G22K26KV2D6QINF6GYX4JDHQ)
 
 Navigate to ```http://localhost:9000/Logs``` to see stored logs.
 
